@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Glassmorphic Registration Form</title>
+    <link rel="stylesheet" href="Registrtion.css">
+</head>
+<body>
+    <div class="registration-container">
+        <h2>Register Here</h2>
+        <form class="registration-form" onmouseover="hoverEffect(this)" onmouseout="normalEffect(this)">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="text" placeholder="Team Name" required>
+            <input type="text" placeholder="Fist Team Member Name" required>
+            <input type="text" placeholder="Fist Team Email" required>
+            <input type="text" placeholder="Second Team Member Name" required>
+            <input type="text" placeholder="Second Team Email" required>
+           
+           <button class="ripple-btn"> <a href="Successful.html">Click Me</a></button>
+  
+            <!-- GIF container hidden initially -->
+          
+           
+  
+        </form>
+    </div>
+
+    <script>
+        function hoverEffect(element) {
+            element.parentElement.style.transform = "perspective(800px) rotateX(0deg)";
+        }
+
+        function normalEffect(element) {
+            element.parentElement.style.transform = "perspective(800px) rotateX(10deg)";
+        }
+    </script>
+     <!-- <script src="script.js"></script> -->
+</body>
+</html>

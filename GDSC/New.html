@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Glitter Effect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            overflow: hidden;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        button {
+            padding: 20px 40px;
+            font-size: 24px;
+            color: white;
+            background: linear-gradient(90deg, #ff7eb3, #ff758c);
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .glitter {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(circle, #fff 0%, #ffcc00 60%, rgba(255, 204, 0, 0) 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            animation: sparkle 3s ease-out;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .tape {
+            position: absolute;
+            width: 10px;
+            height: 50px;
+            background: linear-gradient(45deg, red, yellow, green, blue, purple);
+            animation: fall 3s ease-out;
+            transform: rotate(45deg);
+            opacity: 0.9;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        @keyframes sparkle {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(200px) scale(1.5);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(800px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(800px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="triggerEffect()">Submit</button>
+    </div>
+
+    <script>
+        function triggerEffect() {
+            const container = document.querySelector('.container');
+
+            // Generate glitter
+            for (let i = 0; i < 150; i++) {
+                const glitter = document.createElement('div');
+                glitter.className = 'glitter';
+                glitter.style.left = Math.random() * window.innerWidth + 'px';
+                glitter.style.top = Math.random() * -100 + 'px';
+                container.appendChild(glitter);
+
+                setTimeout(() => glitter.remove(), 3000); // Remove after animation
+            }
+
+            // Generate tapes
+            for (let i = 0; i < 50; i++) {
+                const tape = document.createElement('div');
+                tape.className = 'tape';
+                tape.style.left = Math.random() * window.innerWidth + 'px';
+                tape.style.top = Math.random() * -100 + 'px';
+                container.appendChild(tape);
+
+                setTimeout(() => tape.remove(), 3000); // Remove after animation
+            }
+        }
+    </script>
+</body>
+</html>

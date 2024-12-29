@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&family=Muli&display=swap");
+:root {
+  --ff-head: "Merriweather", serif;
+  --ff-body: "Muli", sans-serif;
+  --fs-body: 1.8rem;
+  --fs-h2: 4rem;
+  --fs-h4: 2.4rem;
+  --fs-h5: 1.8rem;
+  --clr-head: hsla(208, 11%, 15%, 1);
+  --clr-body: hsla(208, 9%, 31%, 0.8);
+  --clr-accent:#3EC1D3;
+
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-size: 62.5%;
+  overflow-x: hidden; /* Prevent horizontal scroll during animation */
+}
+
+body {
+  font-family: var(--ff-body);
+  font-size: var(--fs-body);
+  color: var(--clr-body);
+  line-height: 1.8;
+  font-weight: normal;
+}
+
+.main {
+  padding: 1em 0;
+}
+
+.container {
+
+  max-width: 1200px;
+  width: 90%;
+  margin: 55px auto;
+  opacity: 0;
+  transform: translateX(-100%);
+  animation: slideIn 2s ease-out forwards; /* Apply the transition */
+}
+
+.inner {
+  padding: 0em 0;
+  margin-top: 10rem; /* Adds additional margin from top */
+}
+
+.inner__sub {
+  --fs-h5: 1.5rem;
+  font-size: var(--fs-h5);
+  color: var(--clr-head);
+  margin-bottom: 1em;
+}
+
+.inner__head {
+  --fs-h2: 3rem;
+  font-size: var(--fs-h2);
+  font-family: var(--ff-head);
+  color: var(--clr-head);
+  line-height: 1.4;
+  margin-bottom: 1em;
+}
+
+.inner__content {
+  margin-bottom: 3em;
+}
+
+.inner__clr {
+  color: #3EC1D3;
+}
+
+.inner__text {
+  text-align: left;
+}
+
+/* Keyframe animation for left-to-right sliding */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 750px) {
+  .inner {
+    padding: 1em 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+  }
+
+  .inner__sub {
+    --fs-h5: 1.8rem;
+    font-size: var(--fs-h5);
+  }
+  .inner__headings {
+    flex: 1 0 30%;
+  }
+  .inner__content {
+    flex: 1 0 50%;
+    align-self: center;
+    margin-left: 2rem;
+  }
+  .inner__sub {
+    margin-bottom: 0;
+  }
+  .inner__head {
+    --fs-h2: 4rem;
+  }
+}
+
+
+/* even */
+.events-section {
+  background-color: #f4f8fb; /* Light blue-gray for distinction */
+  padding: 4em 0;
+}
+
+.events-title {
+  font-size: 2.8rem;
+  font-family: var(--ff-head);
+  text-align: center;
+  color: var(--clr-head);
+  margin-bottom: 2rem;
+}
+
+.events-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.event-card {
+  position: relative;
+  background-image:url(eff2.gif) ;
+  background-size: fit; /* Ensures the image fits well */
+  background-position:left;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex: 1 0 300px;
+  transition: transform 1s ease, box-shadow 0.3s ease;
+  overflow: hidden; /* Ensures pseudo-element doesn't overflow */
+}
+
+.event-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: inherit; /* Inherits the background image */
+  background-size: inherit;
+  background-position: inherit;
+  z-index: 0; /* Keeps it behind content */
+  transition: filter 0.3s ease;
+}
+
+.event-card:hover::before {
+  filter: blur(3px); /* Add blur effect to the background image */
+}
+
+.event-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensures text/content remains above the background */
+.event-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.event-title {
+  font-size: 2rem;
+  font-family: var(--ff-head);
+  color: var(--clr-accent);
+  margin-bottom: 1rem;
+}
+
+.event-description {
+  font-size: 1.6rem;
+  color: var(--clr-body);
+  margin-bottom: 1rem;
+}
+
+.event-date {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--clr-head);
+}
